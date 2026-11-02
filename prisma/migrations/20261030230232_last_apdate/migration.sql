@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "sarifle" ADD COLUMN     "active" BOOLEAN NOT NULL DEFAULT true,
+ADD COLUMN     "money" INTEGER NOT NULL DEFAULT 0;

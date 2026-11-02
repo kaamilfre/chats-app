@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "sarifle" ALTER COLUMN "password" SET DATA TYPE TEXT,
+ALTER COLUMN "invite" SET DATA TYPE TEXT;

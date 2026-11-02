@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+Admin
+User
+}
+
+
+model chats {
+  id Int @default(autoincrement()) @unique
+  name String
+  profile String
+  role Role @default(User)
+}
+
+model messages {
+  id Int @default(autoincrement()) @unique
+  message String
+}
