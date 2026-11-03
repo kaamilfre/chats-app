@@ -5,7 +5,7 @@ import cors from "cors";
 import { prisma } from "./lib/prisma.ts";
 
 let app = express();
-app.use(cors({ origin:'http://community.ct.ws/' }));
+app.use(cors({ origin:'http://community.ct.ws' }));
 
 app.use(express.json());
 
