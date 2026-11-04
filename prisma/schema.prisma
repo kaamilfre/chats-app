@@ -16,7 +16,7 @@ User
 model chats {
   id Int @default(autoincrement()) @unique
   name String
-  profile String
+  profile String? @default('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkk7N5iG_ceFqfCovpSnIBQHkatsWHhMKCy2AY1VpR7Q&s=10')
   role Role @default(User)
 }
 
