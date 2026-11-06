@@ -24,3 +24,14 @@ model messages {
   id Int @default(autoincrement()) @unique
   message String
 }
+
+model admin {
+  id Int @default(autoincrement()) @unique
+  userName  String  @unique
+  password String @unique
+}
+
+model news {
+  id Int @default(autoincrement()) @unique
+  alert String
+}
