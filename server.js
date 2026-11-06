@@ -100,6 +100,84 @@ app.get('/api/read/messages',async(req,res)=>{
 
 
 
+// API Admin Panel
+app.post('/api/admin',async(req,res)=>{
+try {
+  let {userName,password} = req.body;
+  if(!userName || !password){
+    return res.status(400).json({message:"Please Check Your Data"})
+  }
+  let login = await prisma.admin.findUnique({
+    where:{
+      userName,
+      password
+    }
+  });
+  res.status(200).json({
+    message:"SuccessFull Login Your Admin panel",
+    login
+  })
+} catch (error) {
+  console.log(error)
+}
+});
+
+
+
+
+
+
+
+
+// API alerts
+app.post('/api/sendAlerts',async(req,res)=>{
+try {
+    if(!req.body.alert){
+    return res.status(400).json({message:'hey Admin Please check Your Sending Alerts'})
+  }
+  let send = await prisma.news.create({
+    data:{
+      alert:req.body.alert 
+    }
+  });
+  res.status(200).json({
+    message:"successFull Sended Your Alert",
+    send
+  })
+} catch (error) {
+  console.log(error)
+}
+});
+
+
+
+
+
+
+
+
+
+
+
+// API Read Alerts on the side Clients
+app.get('/api/alerts',async(req,res)=>{
+try {
+  let getNews = await prisma.news.findMany();
+  res.status(200).json({
+message:'successFull Read News Latest',
+    getNews
+  })
+} catch (error) {
+  console.log(error)
+}
+})
+
+
+
+
+
+
+
 
 
 
