@@ -132,7 +132,7 @@ try {
 
 
 
-// API alerts
+// API all alerts 
 app.post('/api/sendAlerts',async(req,res)=>{
 try {
  let fullTime =  `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`
@@ -164,7 +164,7 @@ try {
 
 
 
-// API Read Alerts on the side Clients
+// API Read Alerts on all the side Clients
 app.get('/api/alerts',async(req,res)=>{
 try {
 
