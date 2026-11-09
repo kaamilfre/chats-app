@@ -34,4 +34,5 @@ model admin {
 model news {
   id Int @default(autoincrement()) @unique
   alert String
+  time String?
 }
