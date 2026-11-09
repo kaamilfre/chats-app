@@ -97,7 +97,7 @@ app.get('/api/read/messages',async(req,res)=>{
 
 
 
-
+    
 
 
 // API Admin Panel
@@ -105,7 +105,7 @@ app.post('/api/admin',async(req,res)=>{
 try {
   let {userName,password} = req.body;
   if(!userName || !password){
-    return res.status(400).json({message:"Please Check Your Data"})
+    return res.status(400).json({message:"Please Check Your Data"});
   }
   let login = await prisma.admin.findUnique({
     where:{
@@ -119,6 +119,9 @@ try {
   })
 } catch (error) {
   console.log(error)
+   res.status(500).json({
+    message:"there is something Went Wrong",
+  })
 }
 });
 
@@ -132,12 +135,14 @@ try {
 // API alerts
 app.post('/api/sendAlerts',async(req,res)=>{
 try {
+ let fullTime =  `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`
     if(!req.body.alert){
     return res.status(400).json({message:'hey Admin Please check Your Sending Alerts'})
   }
   let send = await prisma.news.create({
     data:{
-      alert:req.body.alert 
+      alert:req.body.alert,
+      time:fullTime
     }
   });
   res.status(200).json({
@@ -162,10 +167,11 @@ try {
 // API Read Alerts on the side Clients
 app.get('/api/alerts',async(req,res)=>{
 try {
+
   let getNews = await prisma.news.findMany();
   res.status(200).json({
 message:'successFull Read News Latest',
-    getNews
+    getNews,
   })
 } catch (error) {
   console.log(error)
