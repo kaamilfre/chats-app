@@ -123,7 +123,7 @@ try {
     message:"there is something Went Wrong",
   })
 }
-});
+})
 
 
 
